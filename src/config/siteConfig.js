@@ -12,7 +12,7 @@ export const siteConfig = {
   adminRoute: "/admin-vk",
   countdownDate: "2026-12-31T23:59:59", // Set your target date here
   razorpay: {
-  key: "import.meta.env.VITE_RAZORPAY_KEY" // we will replace later
+  key: import.meta.env.VITE_RAZORPAY_KEY // we will replace later
 },
   // SEO Meta Data
   seo: {
