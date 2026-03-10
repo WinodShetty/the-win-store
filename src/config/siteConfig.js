@@ -38,6 +38,6 @@ export const siteConfig = {
   instagram: "https://instagram.com/thewinstor",
   //facebook: "https://facebook.com/yourusername",
   twitter: "https://x.com/thewinstor",
-  youtube: "https://youtube.com/yourusername"
+  youtube: "https://youtube.com/thewinstore"
 }
 };
