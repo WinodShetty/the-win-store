@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import HTMLFlipBook from "react-pageflip";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
-import Draggable from "react-draggable"; // Import the draggable library
+import Draggable from "react-draggable";
 
 export default function LuxuryFlipBook({ pages }) {
   const flipSound = useRef(null);
-  const bookRef = useRef(null);
+  const bookRef = useRef(null); // Reference to access flipbook API (next/prev)
   const [isMobile, setIsMobile] = useState(false);
 
   /* =============================
@@ -57,8 +57,8 @@ export default function LuxuryFlipBook({ pages }) {
         minScale={0.5}
         maxScale={4}
         centerOnInit={true}
-        wheel={{ step: 0.1 }}
-        panning={{ velocityDisabled: true }}
+        wheel={{ step: 0.1 }} // Smooth wheel zooming
+        panning={{ velocityDisabled: true }} // Prevents aggressive throwing of the component
       >
         {({ zoomIn, zoomOut, resetTransform }) => (
           <>
@@ -82,7 +82,10 @@ export default function LuxuryFlipBook({ pages }) {
                   drawShadow={true}
                   maxShadowOpacity={0.5}
                   flippingTime={900}
+                  
+                  // Disable clicking the book itself to turn pages
                   useMouseEvents={false} 
+                  
                   className="shadow-[0_40px_120px_rgba(0,0,0,0.9)]"
                   onFlip={playFlipSound}
                 >
@@ -104,23 +107,24 @@ export default function LuxuryFlipBook({ pages }) {
             {/* =============================
                 Draggable Bottom Control Panel
             ============================= */}
-            {/* The wrapper handles the default bottom-center position without interfering with Draggable's transform math */}
+            {/* The wrapper handles default centering without breaking Draggable math */}
             <div className="absolute bottom-8 left-0 w-full flex justify-center pointer-events-none z-50">
               
               <Draggable 
-                handle=".drag-handle" // Only allows dragging via the grip icon
-                bounds="parent"       // Keeps the panel from being dragged off the screen
+                handle=".drag-handle" // Dragging only works on the grip icon
+                bounds="parent"       // Keeps the panel inside the screen
               >
-                {/* Re-enable pointer events here so buttons are clickable */}
+                {/* Re-enable pointer events so buttons and handle work */}
                 <div className="pointer-events-auto flex items-center gap-4 bg-black/70 backdrop-blur-md pl-2 pr-6 py-3 rounded-full border border-white/10 shadow-2xl">
                   
-                  {/* The Grip / Drag Handle */}
+                  {/* Grip / Drag Handle */}
                   <div className="drag-handle cursor-grab active:cursor-grabbing p-2 text-white/40 hover:text-white transition-colors" title="Drag to move">
                     <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M8 6a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM8 12a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM8 18a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM16 6a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM16 12a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM16 18a2 2 0 1 1-4 0 2 2 0 0 1 4 0z" />
                     </svg>
                   </div>
 
+                  {/* Divider */}
                   <div className="w-[1px] h-6 bg-white/20 mr-1"></div>
 
                   {/* Zoom Controls */}
