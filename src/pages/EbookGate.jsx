@@ -3,7 +3,7 @@ import { useParams, useSearchParams, useNavigate } from "react-router-dom";
 import { BOOK_REGISTRY } from "../modules/ebook-engine/registry/booksRegistry";
 import WatermarkOverlay from "../modules/ebook-engine/ui/WatermarkOverlay";
 
-const WORKER_URL = "import.meta.env.VITE_WORKER_URL";
+const WORKER_URL = import.meta.env.VITE_WORKER_URL;
 
 export default function EbookGate() {
 
