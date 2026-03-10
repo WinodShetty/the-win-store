@@ -1,8 +1,12 @@
+// src/components/CartDrawer.jsx
 import React, { useState } from "react";
 import { useApp } from "../context/AppContext";
 import { ShoppingCart, X } from "lucide-react";
-import { motion, AnimatePresence } from "motion/react"; // or "framer-motion" depending on your package.json
+import { motion, AnimatePresence } from "motion/react"; 
 import { siteConfig } from "../config/siteConfig";
+
+// ---> 1. ADDED: Import Google Analytics <---
+import ReactGA from "react-ga4";
 
 const WORKER_URL = "https://the-win-access.mechvnod.workers.dev";
 
@@ -104,6 +108,21 @@ export const CartDrawer = () => {
           }
 
           localStorage.setItem("purchasedLinks", JSON.stringify(purchasedLinks));
+
+          /* =========================================
+             ---> 2. ADDED: ECOMMERCE REVENUE TRACKING <---
+          ========================================= */
+          ReactGA.event("purchase", {
+            transaction_id: `RZP_${Date.now()}`,
+            value: total,
+            currency: "INR",
+            items: cart.map((item) => ({
+              item_id: item.id,
+              item_name: item.title["en"] || item.title[item.itemLanguage],
+              price: item.offerPrice,
+              quantity: 1
+            }))
+          });
 
           clearCart();
           setIsCartOpen(false);

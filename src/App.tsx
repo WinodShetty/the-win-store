@@ -1,3 +1,4 @@
+// src/App.tsx
 /**
  * @license
  * SPDX-License-Identifier: Apache-2.0
@@ -23,6 +24,9 @@ import { Admin } from "./pages/Admin";
 import EbookGate from "./pages/EbookGate";
 
 import { siteConfig } from "./config/siteConfig";
+
+// ---> 1. ADDED: Import the Analytics Component <---
+import { Analytics } from "./components/Analytics";
 
 /* ---------------- Layout Controller ---------------- */
 
@@ -57,6 +61,8 @@ export default function App() {
   return (
     <AppProvider>
       <Router>
+        {/* ---> 2. ADDED: Analytics runs silently on every route change <--- */}
+        <Analytics /> 
         <LayoutWrapper />
       </Router>
     </AppProvider>

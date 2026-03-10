@@ -5,7 +5,7 @@
 
 export const siteConfig = {
   brandName: "The Win",
-  domain: "thewinstore.in",
+  domain: "thewinstore.com",
   whatsappNumber: "+919392158601",
   whatsappMessage: "Hi , I'm interested in 'The Win' eBook bundle. Can you help me?",
   currency: "₹",
@@ -38,6 +38,6 @@ export const siteConfig = {
   instagram: "https://instagram.com/thewinstor",
   //facebook: "https://facebook.com/yourusername",
   twitter: "https://x.com/thewinstor",
-  youtube: "https://youtube.com/thewinstore"
+  youtube: "https://youtube.com/@thewinstore"
 }
 };
