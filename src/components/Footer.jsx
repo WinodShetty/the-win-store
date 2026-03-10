@@ -1,16 +1,16 @@
 import React from "react";
 import { useApp } from "../context/AppContext";
 import { siteConfig } from "../config/siteConfig";
-import { Instagram, Facebook, Twitter, Youtube } from "lucide-react";
+import { Instagram, Facebook, X, Youtube } from "lucide-react";
 
 export const Footer = () => {
   const { t } = useApp();
 
   const socialIcons = [
     { Icon: Instagram, link: siteConfig.socialLinks?.instagram },
-    { Icon: Facebook, link: siteConfig.socialLinks?.facebook },
-    { Icon: Twitter, link: siteConfig.socialLinks?.twitter },
-    // { Icon: Youtube, link: siteConfig.socialLinks?.youtube }, // YouTube commented
+    //{ Icon: Facebook, link: siteConfig.socialLinks?.facebook },
+    { Icon: X, link: siteConfig.socialLinks?.twitter },
+    { Icon: Youtube, link: siteConfig.socialLinks?.youtube }, // YouTube commented
   ].filter(item => item.link); // Hide if link not provided
 
   return (

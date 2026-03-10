@@ -1,10 +1,19 @@
 import React, { useState } from "react";
 import { useApp } from "../context/AppContext";
 import { ShoppingCart, X } from "lucide-react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence } from "motion/react"; // or "framer-motion" depending on your package.json
 import { siteConfig } from "../config/siteConfig";
 
 const WORKER_URL = "https://the-win-access.mechvnod.workers.dev";
+
+/* ================================
+   Language Labels (Reusable)
+================================ */
+const LANGUAGE_LABELS = {
+  en: "English",
+  te: "తెలుగు",
+  hi: "हिंदी",
+};
 
 export const CartDrawer = () => {
   const {
@@ -21,10 +30,12 @@ export const CartDrawer = () => {
     clearCart,
   } = useApp();
 
-  // Local state for the coupon input field and error messages
   const [couponCode, setCouponCode] = useState("");
   const [couponError, setCouponError] = useState("");
 
+  /* =============================
+     Razorpay Checkout
+  ============================= */
   const handleCheckout = async () => {
     if (cart.length === 0) return;
 
@@ -40,6 +51,9 @@ export const CartDrawer = () => {
           let purchasedLinks = [];
 
           for (const item of cart) {
+            /* =============================
+               Bundle Purchase
+            ============================= */
             if (item.id === "bundle-all") {
               const allBooks = ["book-1", "book-2", "book-3", "book-4", "book-5"];
 
@@ -54,17 +68,20 @@ export const CartDrawer = () => {
                 });
 
                 const data = await response.json();
-
                 const link = `${window.location.origin}/ebook/${bookId}/${item.itemLanguage}?access=${data.token}`;
 
                 purchasedLinks.push({
                   title: `Book ${bookId.replace("book-", "")}`,
-                  language: item.itemLanguage.toUpperCase(),
+                  language: item.itemLanguage,
                   url: link,
                   image: item.image,
                 });
               }
-            } else {
+            } 
+            /* =============================
+               Individual Book
+            ============================= */
+            else {
               const response = await fetch(`${WORKER_URL}/generate`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -75,12 +92,11 @@ export const CartDrawer = () => {
               });
 
               const data = await response.json();
-
               const link = `${window.location.origin}/ebook/${item.id}/${item.itemLanguage}?access=${data.token}`;
 
               purchasedLinks.push({
                 title: item.title[item.itemLanguage],
-                language: item.itemLanguage.toUpperCase(),
+                language: item.itemLanguage,
                 url: link,
                 image: item.image,
               });
@@ -92,8 +108,7 @@ export const CartDrawer = () => {
           clearCart();
           setIsCartOpen(false);
 
-          window.location.href =
-            "/success?links=" + encodeURIComponent(JSON.stringify(purchasedLinks));
+          window.location.href = "/success?links=" + encodeURIComponent(JSON.stringify(purchasedLinks));
         } catch (error) {
           console.error("Checkout Error:", error);
           alert("Something went wrong. Please try again.");
@@ -110,10 +125,10 @@ export const CartDrawer = () => {
   };
 
   /* =============================
-     Coupon Handlers
+     Coupon Apply
   ============================= */
   const handleApplyCoupon = () => {
-    setCouponError(""); // Reset error state
+    setCouponError("");
 
     if (!couponCode.trim()) {
       setCouponError("Please enter a coupon code.");
@@ -125,7 +140,7 @@ export const CartDrawer = () => {
         discountType: "flat",
         value: 30,
       });
-      setCouponCode(""); // Clear input on success
+      setCouponCode("");
     } else {
       setCouponError("Invalid coupon code.");
     }
@@ -137,10 +152,14 @@ export const CartDrawer = () => {
     setCouponError("");
   };
 
+  /* =============================
+     UI
+  ============================= */
   return (
     <AnimatePresence>
       {isCartOpen && (
         <>
+          {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -149,6 +168,7 @@ export const CartDrawer = () => {
             className="fixed inset-0 bg-black/80 backdrop-blur-md z-[60]"
           />
 
+          {/* Drawer */}
           <motion.div
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
@@ -186,7 +206,14 @@ export const CartDrawer = () => {
                       {item.title[item.itemLanguage]}
                     </h3>
 
-                    <p className="text-slate-400 text-sm">₹{item.offerPrice}</p>
+                    {/* Language Display */}
+                    <p className="text-slate-400 text-xs mt-1">
+                      Language: {LANGUAGE_LABELS[item.itemLanguage]}
+                    </p>
+
+                    <p className="text-slate-400 text-sm mt-1">
+                      ₹{item.offerPrice}
+                    </p>
 
                     <button
                       onClick={() => removeFromCart(item.cartId)}
@@ -199,11 +226,10 @@ export const CartDrawer = () => {
               ))}
             </div>
 
-            {/* Footer / Checkout & Coupon Section */}
+            {/* Footer */}
             {cart.length > 0 && (
               <div className="p-8 bg-white/5 border-t border-white/10 flex flex-col gap-6">
-                
-                {/* Coupon Input Area */}
+                {/* Coupon Section */}
                 <div>
                   {!coupon ? (
                     <div className="flex gap-3">
@@ -212,10 +238,10 @@ export const CartDrawer = () => {
                         placeholder="Enter coupon code"
                         value={couponCode}
                         onChange={(e) => setCouponCode(e.target.value)}
-                        // Allows user to press "Enter" on their keyboard to apply
-                        onKeyDown={(e) => e.key === "Enter" && handleApplyCoupon()} 
+                        onKeyDown={(e) => e.key === "Enter" && handleApplyCoupon()}
                         className="flex-1 bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-slate-500 focus:outline-none focus:border-sky-500 uppercase transition-colors"
                       />
+
                       <button
                         onClick={handleApplyCoupon}
                         className="bg-white/10 hover:bg-white/20 text-white px-6 py-3 rounded-xl font-bold transition-colors"
@@ -228,6 +254,7 @@ export const CartDrawer = () => {
                       <span className="text-emerald-400 font-bold text-sm">
                         ✓ Coupon Applied
                       </span>
+
                       <button
                         onClick={handleRemoveCoupon}
                         className="text-red-400 text-sm hover:underline"
@@ -236,7 +263,7 @@ export const CartDrawer = () => {
                       </button>
                     </div>
                   )}
-                  {/* Error Message */}
+
                   {couponError && (
                     <p className="text-red-400 text-sm mt-2">{couponError}</p>
                   )}
@@ -244,26 +271,31 @@ export const CartDrawer = () => {
 
                 {/* Price Breakdown */}
                 <div className="space-y-2">
-                  {/* Show subtotal only if a discount is applied to show the math clearly */}
                   {coupon && (
                     <>
                       <div className="flex justify-between text-slate-400 text-sm">
                         <span>Subtotal</span>
                         <span>₹{subtotal}</span>
                       </div>
+
                       <div className="flex justify-between text-emerald-400 text-sm">
                         <span>Discount</span>
                         <span>-₹{discount}</span>
                       </div>
                     </>
                   )}
-                  
-                  <div className={`flex justify-between text-white font-bold text-lg ${coupon ? 'pt-3 border-t border-white/10' : ''}`}>
+
+                  <div
+                    className={`flex justify-between text-white font-bold text-lg ${
+                      coupon ? "pt-3 border-t border-white/10" : ""
+                    }`}
+                  >
                     <span>{t?.total || "Total"}</span>
                     <span>₹{total}</span>
                   </div>
                 </div>
 
+                {/* Checkout Button */}
                 <button
                   onClick={handleCheckout}
                   className="w-full bg-gradient-to-r from-sky-500 to-teal-500 text-white font-black py-4 rounded-2xl uppercase tracking-widest hover:opacity-90 transition-opacity shadow-lg shadow-sky-500/20"

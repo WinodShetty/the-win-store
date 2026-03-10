@@ -7,10 +7,10 @@ export const translations = {
     langName: "English",
 
     heroTitle:
-      "We can't change this education system. But we can change our mindset.",
+      "Change your mindset in just 1 focused hour for success ",
     heroSubtitle: "We are challenging you —",
     heroHook:
-      "These 5 eBooks cost less than a biryani and can transform your mindset in just 1 focused hour.",
+      "These 5 eBooks cost less than a biryani and We can't change this education system. But we can change our mindset.",
     ctaButton: "Get The Bundle (5 @ ₹125) Now",
 
     compareTitle: "Education System vs The Win eBooks",
@@ -65,10 +65,10 @@ export const translations = {
     langName: "తెలుగు",
 
     heroTitle:
-      "ఈ విద్యా వ్యవస్థను మనం మార్చలేము. కానీ మన ఆలోచనా విధానాన్ని మాత్రం మార్చగలం.",
+      "జీవితంలో  గెలవడానికి, కేవలం 1 గంటలో  మీ ఆలోచన విధానాన్ని మార్చగలవు",
     heroSubtitle: "మేము మీకు ఒక సవాల్ ఇస్తున్నాం —",
     heroHook:
-      "ఒక బిర్యానీ ధర కంటే తక్కువలో వచ్చే ఈ 5 ఈ-బుక్స్, కేవలం 1 గంటలో మీ ఆలోచన విధానాన్ని మార్చగలవు.",
+      "ఒక బిర్యానీ ధర కంటే తక్కువలో వచ్చే ఈ 5 ఈ-బుక్స్, ఈ విద్యా వ్యవస్థను మనం మార్చలేము. కానీ మన ఆలోచనా విధానాన్ని మాత్రం మార్చగలం.",
     ctaButton: "ఇప్పుడే బండిల్ పొందండి (5 @ ₹125)",
 
     compareTitle: "విద్యా వ్యవస్థ vs ది విన్ ఈ-బుక్స్",
@@ -123,10 +123,10 @@ export const translations = {
     langName: "हिन्दी",
 
     heroTitle:
-      "इस शिक्षा व्यवस्था को हम नहीं बदल सकते। लेकिन अपनी सोच को जरूर बदल सकते हैं।",
+      "जिंदगी में जीतना है, सिर्फ 1 घंटों में आपकी सोच बदल सकती हैं।" ,
     heroSubtitle: "हम आपको एक चुनौती दे रहे हैं —",
     heroHook:
-      "एक बिरयानी की कीमत से भी कम में मिलने वाली ये 5 ई-बुक्स, सिर्फ 1 घंटों में आपकी सोच बदल सकती हैं।",
+      "एक बिरयानी की कीमत से भी कम में मिलने वाली ये 5 ई-बुक्स, इस शिक्षा व्यवस्था को हम नहीं बदल सकते। लेकिन अपनी सोच को जरूर बदल सकते हैं। ",
     ctaButton: "अभी बंडल खरीदें (5 @ ₹125)",
 
     compareTitle: "शिक्षा व्यवस्था vs द विन ई-बुक्स",

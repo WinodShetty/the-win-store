@@ -35,8 +35,9 @@ export const siteConfig = {
   },
 
   socialLinks: {
-  instagram: "https://instagram.com/yourusername",
-  facebook: "https://facebook.com/yourusername",
-  twitter: "https://twitter.com/yourusername"
+  instagram: "https://instagram.com/thewinstor",
+  //facebook: "https://facebook.com/yourusername",
+  twitter: "https://x.com/thewinstor",
+  youtube: "https://youtube.com/yourusername"
 }
 };
