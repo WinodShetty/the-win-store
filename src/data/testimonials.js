@@ -104,13 +104,6 @@ export const testimonials = {
       image: "https://picsum.photos/seed/user4/100/100"
     },
     {
-      id: 4,
-      name: "करण",
-      city: "मुंबई",
-      text: "मेरे एक दिन के खर्च से भी कम है, लेकिन जो ज्ञान मिला है उसकी कोई कीमत नहीं।",
-      image: "https://picsum.photos/seed/user4/100/100"
-    },
-    {
       id: 5,
       name: "सुरेश",
       city: "मुंबई",
