@@ -3,8 +3,7 @@
  */
 
 export const testimonials = {
-  en: [
-    {
+  en: [{
       id: 1,
       name: "Rahul Sharma",
       city: "Mumbai",
@@ -24,10 +23,23 @@ export const testimonials = {
       city: "Ahmedabad",
       text: "Best ₹125 I've ever spent. The execution strategy book is a game changer for my small business.",
       image: "https://picsum.photos/seed/user3/100/100"
+    },
+    {
+      id: 4,
+      name: "Karan",
+      city: "Mumbai",
+      text: "Its less than my pocket money But life lesson it gave me is priceless.",
+      image: "https://picsum.photos/seed/user4/100/100"
+    },
+    {
+      id: 5,
+      name: "Suresh",
+      city: "Mumbai",
+      text: "After reading these books, I got a clear path for my happiness and success in life.",
+      image: "https://picsum.photos/seed/user5/100/100"
     }
   ],
-  te: [
-    {
+  te: [{
       id: 1,
       name: "రాహుల్ శర్మ",
       city: "ముంబై",
@@ -47,10 +59,23 @@ export const testimonials = {
       city: "అహ్మదాబాద్",
       text: "నేను ఖర్చు చేసిన ఉత్తమ ₹125. ఎగ్జిక్యూషన్ స్ట్రాటజీ బుక్ నా చిన్న వ్యాపారానికి గేమ్ ఛేంజర్.",
       image: "https://picsum.photos/seed/user3/100/100"
+    },
+    {
+      id: 4,
+      name: "కరణ్ ",
+      city: "ముంబాయ్ ",
+      text: "నా రోజు ఖర్చు కంటే తక్కువ కానీ ఇచ్చిన జ్ఞానం మాత్రం వెలకట్టలేనిది.",
+      image: "https://picsum.photos/seed/user4/100/100"
+    },
+    {
+      id: 5,
+      name: "సురేష్",
+      city: "ముంబాయి",
+      text: "ఈ e-పుస్తకాలు చదివిన తర్వాత నా జీవితంలో ఆనందం మరియు విజయానికి స్పష్టమైన మార్గం కనిపించింది.",
+      image: "https://picsum.photos/seed/user5/100/100"
     }
   ],
-  hi: [
-    {
+  hi: [{
       id: 1,
       name: "राहुल शर्मा",
       city: "मुंबई",
@@ -70,6 +95,27 @@ export const testimonials = {
       city: "अहमदाबाद",
       text: "मेरे द्वारा खर्च किए गए अब तक के सबसे अच्छे ₹125। निष्पादन रणनीति पुस्तक मेरे छोटे व्यवसाय के लिए गेम चेंजर है।",
       image: "https://picsum.photos/seed/user3/100/100"
+    },
+    {
+      id: 4,
+      name: "करण",
+      city: "मुंबई",
+      text: "मेरे एक दिन के खर्च से भी कम है, लेकिन जो ज्ञान मिला है उसकी कोई कीमत नहीं।",
+      image: "https://picsum.photos/seed/user4/100/100"
+    },
+    {
+      id: 4,
+      name: "करण",
+      city: "मुंबई",
+      text: "मेरे एक दिन के खर्च से भी कम है, लेकिन जो ज्ञान मिला है उसकी कोई कीमत नहीं।",
+      image: "https://picsum.photos/seed/user4/100/100"
+    },
+    {
+      id: 5,
+      name: "सुरेश",
+      city: "मुंबई",
+      text: "इन e-किताबों को पढ़ने के बाद मुझे अपनी ज़िंदगी में खुशी और सफलता के लिए एक साफ रास्ता मिल गया।",
+      image: "https://picsum.photos/seed/user5/100/100"
     }
   ]
 };

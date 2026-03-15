@@ -47,14 +47,14 @@ export const ProductSection = () => {
                   </div>
                 )}
 
-                <div className="aspect-[4/5] rounded-2xl overflow-hidden mb-3 border border-white/5 relative shadow-xl">
+                <div className="aspect-[3/5] rounded-2xl overflow-hidden mb-3 border border-white/5 relative shadow-xl">
                   <img 
                     src={product.image} 
                     alt={product.title[language]} 
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
                     referrerPolicy="no-referrer"
                   />
-                  <div className="absolute top-2 left-2 right-2">
+                  <div className="absolute top-0 left-2 right-2">
                     <div className="bg-red-500/90 backdrop-blur-md text-white text-[8px] font-black px-2 py-1 rounded-lg flex items-center gap-1 justify-center uppercase tracking-widest shadow-lg border border-white/10">
                       <Zap size={8} fill="currentColor" />
                       {t.offerEndsSoon}
