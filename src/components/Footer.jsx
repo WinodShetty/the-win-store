@@ -92,7 +92,7 @@ export const Footer = () => {
           <ul className="space-y-5 text-slate-400 font-bold">
 
             {/* WhatsApp */}
-            <li className="flex items-center gap-3">
+            {/* <li className="flex items-center gap-3">
               <span className="text-sky-500">WhatsApp:</span>
               <a
                 href={`https://wa.me/${siteConfig.whatsappNumber.replace("+", "")}`}
@@ -102,7 +102,7 @@ export const Footer = () => {
               >
                 {siteConfig.whatsappNumber}
               </a>
-            </li>
+            </li> */}
 
             {/* Email */}
             <li className="flex items-center gap-3">
