@@ -24,7 +24,7 @@
 
 export const coupons = {
   codes: ["10+2", "DREAM", "WIN30","MONEY"],
-  discount: 30,
+  discount: 74,
   
 };
 
